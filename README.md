@@ -1,136 +1,126 @@
 # TeleTransfer - AI-Powered Telegram Member Transfer Tool
 
-TeleTransfer is a smart web application designed to facilitate the seamless transfer of real members from any public Telegram group to a user's private community. The platform aims to provide a fully automated experience, abstracting away technical complexities for the user.
+TeleTransfer هو تطبيق ويب ذكي مصمم لتسهيل نقل الأعضاء الحقيقيين من أي مجموعة تليجرام عامة إلى مجتمع المستخدم الخاص. يهدف النظام إلى توفير تجربة آلية بالكامل مع إخفاء التعقيدات التقنية عن المستخدم.
 
 ## Features
 
-*   **AI-Powered Virtual Agent:** An intelligent virtual agent interacts with the user through a simulated chat interface, guiding them through the process of providing group links, desired member count, and payment method.
-*   **No Telegram Login Required:** Enhances user privacy and trust by not requiring users to log in with their Telegram accounts.
-*   **Dual Language Support:** The application supports both Arabic and English languages, with dynamic switching.
-*   **Light and Dark Mode:** A modern UI with toggleable light and dark themes for enhanced user experience.
-*   **Automated Backend Processing (Simulated):** After payment proof is uploaded, the transfer process is professionally executed in the background (currently simulated), giving the user a sense of speed and reliability.
-*   **Full Customization:** The project owner can fully customize various aspects of the platform, including:
-    *   Pricing models
-    *   All textual content (headlines, descriptions, messages)
-    *   Payment methods
-    *   Landing page sections and content
-*   **Scalable Service System:** Designed as a flexible and profitable service system with potential for future expansion.
+### المميزات الأساسية
+- **🤖 وكيل ذكي مدعوم بالـ AI:** مساعد ذكي يتفاعل مع المستخدم ويرشده خلال عملية النقل
+- **🔒 بدون تسجيل دخول تليجرام:** يعزز خصوصية المستخدم وثقته بعدم طلب بيانات تليجرام
+- **🌐 دعم ثنائي اللغة:** يدعم العربية والإنجليزية مع إمكانية التبديل الديناميكي
+- **🎨 الوضع المظلم والفاتح:** واجهة عصرية مع إمكانية التبديل بين الأوضاع
+- **⚡ معالجة آلية متقدمة:** معالجة احترافية في الخلفية تعطي المستخدم شعوراً بالسرعة والموثوقية
+- **📊 لوحة تحكم شاملة:** إدارة العمليات والإحصائيات بسهولة
+- **🎯 تتبع العمليات:** نظام تتبع متقدم لمراقبة حالة النقل في الوقت الفعلي
+
+### المميزات التقنية
+- **📱 تصميم متجاوب:** يعمل بشكل مثالي على جميع الأجهزة
+- **🚀 أداء عالي:** مبني بـ Next.js 14 مع App Router
+- **🎨 تصميم حديث:** استخدام Tailwind CSS و shadcn/ui
+- **🔧 قابل للتخصيص:** إمكانية تخصيص جميع جوانب النظام
 
 ## Project Structure
 
-The project is built with Next.js (App Router), React, and Tailwind CSS, utilizing `shadcn/ui` components for a modern and responsive design.
+المشروع مبني باستخدام Next.js (App Router) و React و Tailwind CSS مع استخدام مكونات `shadcn/ui` للحصول على تصميم عصري ومتجاوب.
 
-\`\`\`
+```
 .
 ├── app/
 │   ├── api/
 │   │   └── chat/
-│   │       └── route.ts       # AI SDK route handler for chatbot
-│   ├── globals.css            # Global Tailwind CSS styles
-│   ├── layout.tsx             # Root layout with Theme and Language providers
-│   └── page.tsx               # Main landing page
+│   │       └── route.ts       # معالج API للدردشة مع الذكاء الاصطناعي
+│   ├── globals.css            # أنماط Tailwind CSS العامة
+│   ├── layout.tsx             # التخطيط الأساسي مع موفري السمة واللغة
+│   └── page.tsx               # الصفحة الرئيسية
 ├── components/
-│   ├── ui/                    # shadcn/ui components (button, input, card, etc.)
+│   ├── ui/                    # مكونات shadcn/ui (أزرار، مدخلات، بطاقات، إلخ)
 │   │   └── ...
-│   ├── AdminPanel.tsx         # Admin dashboard for managing platform
-│   ├── AIChatbot.tsx          # AI chat interface for user interaction
-│   ├── AICharts.tsx           # Placeholder for AI-powered analytics charts
-│   ├── AITrainingDashboard.tsx # Dashboard for AI model training (simulated)
-│   ├── ContactSection.tsx     # Contact form and information
-│   ├── CustomizationPanel.tsx # Panel for platform owner to customize settings
-│   ├── Dashboard.tsx          # User dashboard (placeholder)
-│   ├── EnhancedAdminFeatures.tsx # Enhanced user management features for admin
-│   ├── EnhancedFAQ.tsx        # FAQ section with accordion
-│   ├── EnhancedTestimonials.tsx # Testimonials section
-│   ├── Features.tsx           # Key features section
-│   ├── FloatingChatButton.tsx # Floating button for AI chatbot
-│   ├── Footer.tsx             # Website footer
-│   ├── Header.tsx             # Navigation header
-│   ├── Hero.tsx               # Main hero section
-│   ├── LanguageToggle.tsx     # Component to switch between languages
-│   ├── LoadingSpinner.tsx     # Generic loading spinner
-│   ├── NewsletterSignup.tsx   # Newsletter subscription form
-│   ├── NotificationSystem.tsx # System for displaying notifications
-│   ├── OrderTracking.tsx      # Component to track transfer orders
-│   ├── PaymentMethods.tsx     # Section for displaying payment options
-│   ├── PaymentProofUpload.tsx # Component for uploading payment proof
-│   ├── ProcessSteps.tsx       # Section outlining the transfer process
-│   ├── ProgressIndicator.tsx  # Visual progress bar for multi-step forms
-│   ├── ScrollToTop.tsx        # Button to scroll back to top
-│   ├── Stats.tsx              # Key statistics/achievements section
-│   ├── SuccessModal.tsx       # Modal for success messages
-│   ├── TransferForm.tsx       # Main transfer request form
-│   └── WhatsAppSupport.tsx    # Floating WhatsApp support button
+│   ├── MainApp.tsx            # التطبيق الرئيسي مع إدارة الصفحات
+│   ├── LandingPage.tsx        # صفحة الهبوط الرئيسية
+│   ├── Dashboard.tsx          # لوحة التحكم للمستخدم
+│   ├── Settings.tsx           # صفحة الإعدادات
+│   ├── AIAssistant.tsx        # مساعد الذكاء الاصطناعي
+│   ├── SmartHeader.tsx        # رأس الصفحة الذكي
+│   ├── TransferWizard.tsx     # معالج عملية النقل
+│   ├── OrderTracking.tsx      # تتبع الطلبات
+│   ├── LanguageToggle.tsx     # مبدل اللغة
+│   └── sections/              # أقسام الصفحة الرئيسية
+│       ├── AIHeroSection.tsx
+│       ├── InteractiveFeatures.tsx
+│       ├── LiveDemoSection.tsx
+│       ├── SmartPricingCalculator.tsx
+│       └── IntelligentFAQ.tsx
 ├── hooks/
-│   ├── use-language.ts        # Custom hook for language context
-│   ├── use-toast.ts           # Hook for shadcn/ui toast notifications
-│   └── useTheme.ts            # Custom hook for theme context (DEPRECATED - using next-themes directly)
+│   ├── useLanguage.ts         # خطاف مخصص لسياق اللغة
+│   └── use-toast.ts           # خطاف لإشعارات shadcn/ui
 ├── lib/
-│   └── utils.ts               # Utility functions (e.g., `cn` for Tailwind classes)
-├── public/                    # Static assets (images, icons)
-│   ├── abstract-network.png
-│   ├── ai-brain-network.png
-│   ├── placeholder-logo.png
-│   ├── placeholder-user.jpg
-│   ├── placeholder-user.png
-│   ├── placeholder.jpg
-│   ├── placeholder.png
-│   ├── placeholder-logo.svg
-│   ├── placeholder.svg
-│   └── usdt-logo.png
-├── .env.example               # Example environment variables
-├── Dockerfile                 # Docker configuration
-├── next.config.mjs            # Next.js configuration
-├── package.json               # Project dependencies and scripts
-├── postcss.config.mjs         # PostCSS configuration for Tailwind
-├── README.md                  # Project README
-├── tsconfig.json              # TypeScript configuration
-└── .github/                   # GitHub Actions workflows
-    └── workflows/
-        └── ci.yml             # CI/CD pipeline for build and deploy
-\`\`\`
+│   └── utils.ts               # دوال مساعدة (مثل `cn` لفئات Tailwind)
+├── public/                    # الأصول الثابتة (الصور، الأيقونات)
+├── .env.example               # مثال على متغيرات البيئة
+├── Dockerfile                 # تكوين Docker
+├── next.config.mjs            # تكوين Next.js
+├── package.json               # تبعيات المشروع والسكريبتات
+├── postcss.config.mjs         # تكوين PostCSS لـ Tailwind
+├── README.md                  # ملف README للمشروع
+└── tsconfig.json              # تكوين TypeScript
+```
 
-## Getting Started
+## البدء السريع
 
-To run this project locally:
+لتشغيل هذا المشروع محلياً:
 
-1.  **Clone the repository:**
-    \`\`\`bash
-    git clone <repository-url>
-    cd teletransfer-tool
-    \`\`\`
-2.  **Install dependencies:**
-    \`\`\`bash
+1.  **استنساخ المستودع:**
+    ```bash
+    git clone <رابط-المستودع>
+    cd teletransfer
+    ```
+
+2.  **تثبيت التبعيات:**
+    ```bash
     npm install
-    \`\`\`
-3.  **Set up environment variables:**
-    Create a `.env.local` file in the root directory and add necessary environment variables based on `.env.example`.
-4.  **Run the development server:**
-    \`\`\`bash
+    ```
+
+3.  **إعداد متغيرات البيئة:**
+    أنشئ ملف `.env.local` في المجلد الجذر وأضف متغيرات البيئة الضرورية بناءً على `.env.example`.
+
+4.  **تشغيل خادم التطوير:**
+    ```bash
     npm run dev
-    \`\`\`
-    Open [http://localhost:3000](http://localhost:3000) in your browser.
+    ```
+    افتح [http://localhost:3000](http://localhost:3000) في متصفحك.
 
-## Deployment
+## النشر
 
-This project can be easily deployed to Vercel. Ensure you have the `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` configured as GitHub Secrets for the CI/CD pipeline to work.
+يمكن نشر هذا المشروع بسهولة على Vercel أو أي منصة استضافة أخرى تدعم Next.js.
 
-## Customization
+## التخصيص
 
-As the project owner, you can customize various aspects of the platform through the `CustomizationPanel` in the Admin Panel. This includes:
+كمالك للمشروع، يمكنك تخصيص جوانب مختلفة من النظام من خلال:
 
-*   **Platform Name & Messages:** Update the branding and user-facing messages.
-*   **Theme Settings:** Control dark mode toggle and primary color.
-*   **Pricing:** Adjust the price per member and minimum transfer quantities.
-*   **Payment Methods:** Enable or disable various payment options.
+- **اسم النظام والرسائل:** تحديث العلامة التجارية والرسائل المواجهة للمستخدم
+- **إعدادات السمة:** التحكم في الوضع المظلم واللون الأساسي
+- **التسعير:** تعديل سعر العضو الواحد والحد الأدنى لكميات النقل
+- **طرق الدفع:** تفعيل أو إلغاء تفعيل خيارات الدفع المختلفة
 
-## Future Enhancements
+## التحسينات المستقبلية
 
-*   **Real Backend Integration:** Connect to a database (e.g., PostgreSQL with Neon, Supabase) and implement actual API routes for persistent data storage and processing.
-*   **Actual Telegram API Integration:** Implement the core logic for real Telegram member transfers using Telegram's API or a specialized third-party service.
-*   **Payment Gateway Integration:** Integrate with secure payment gateways (e.g., Stripe, PayPal, crypto payment processors) for live transactions.
-*   **User Authentication:** Implement a robust authentication system (e.g., NextAuth.js, Supabase Auth) to secure admin and user-specific features.
-*   **Real-time Analytics:** Populate AICharts with live data from actual transfers and user activity.
-*   **Advanced AI Chatbot:** Integrate with a powerful LLM (e.g., OpenAI GPT-4o, Groq) using AI SDK for more intelligent and dynamic conversational capabilities.
-*   **Comprehensive Error Handling & Logging:** Enhance server-side error handling, logging, and monitoring.
-*   **Automated Testing:** Add unit, integration, and end-to-end tests to ensure code quality and stability.
+- **تكامل قاعدة البيانات الحقيقية:** الاتصال بقاعدة بيانات (مثل Supabase) وتنفيذ مسارات API فعلية
+- **تكامل Telegram API الفعلي:** تنفيذ المنطق الأساسي لنقل أعضاء تليجرام الحقيقي
+- **تكامل بوابات الدفع:** التكامل مع بوابات دفع آمنة (Stripe، PayPal، معالجات العملات المشفرة)
+- **نظام المصادقة:** تنفيذ نظام مصادقة قوي لتأمين المميزات الإدارية والخاصة بالمستخدم
+- **التحليلات في الوقت الفعلي:** ملء الرسوم البيانية ببيانات حية من عمليات النقل الفعلية
+- **دردشة ذكية متقدمة:** التكامل مع نماذج لغوية قوية لقدرات محادثة أكثر ذكاءً وديناميكية
+- **معالجة شاملة للأخطاء:** تحسين معالجة الأخطاء والتسجيل والمراقبة من جانب الخادم
+- **الاختبار الآلي:** إضافة اختبارات الوحدة والتكامل والشاملة لضمان جودة الكود والاستقرار
+
+## المساهمة
+
+نرحب بالمساهمات! يرجى قراءة دليل المساهمة قبل تقديم طلبات السحب.
+
+## الترخيص
+
+هذا المشروع مرخص تحت رخصة MIT - راجع ملف LICENSE للتفاصيل.
+
+## الدعم
+
+للحصول على الدعم، يرجى فتح issue في GitHub أو التواصل معنا عبر البريد الإلكتروني.
