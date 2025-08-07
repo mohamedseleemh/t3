@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/hooks/useLanguage'
 import { Toaster } from '@/components/ui/toaster'
+import { ErrorBoundary } from '@/src/components/common/ErrorBoundary'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -11,10 +12,18 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'TeleTransfer - نقل أعضاء تليجرام بالذكاء الاصطناعي',
-  description: 'أداة ذكية لنقل أعضاء تليجرام بين المجموعات بمعدل نجاح 99.8% وبأمان كامل',
+  title: 'TeleTransfer - AI-Powered Telegram Member Transfer',
+  description: 'Smart tool for transferring Telegram members between groups with 99.8% success rate and complete security',
   keywords: 'telegram, member transfer, AI, نقل أعضاء تليجرام, ذكاء اصطناعي',
-    generator: 'v0.dev'
+  authors: [{ name: 'TeleTransfer Team' }],
+  creator: 'TeleTransfer',
+  publisher: 'TeleTransfer',
+  robots: 'index, follow',
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' }
+  ]
 }
 
 export default function RootLayout({
@@ -23,19 +32,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LanguageProvider>
-            {children}
-            <Toaster />
-          </LanguageProvider>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <LanguageProvider>
+              {children}
+              <Toaster />
+            </LanguageProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )
